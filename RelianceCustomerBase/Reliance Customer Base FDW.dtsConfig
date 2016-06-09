@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<DTSConfiguration>
+	<DTSConfigurationHeading>
+		<DTSConfigurationFileInfo GeneratedBy="RELIANCE\oyuan" GeneratedFromPackageName="Reliance Customer Base Fdw" GeneratedFromPackageID="{68EF2973-2147-4B1F-983D-F140B43866AB}" GeneratedDate="6/7/2016 2:15:18 PM"/>
+	</DTSConfigurationHeading>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[Excel Connection Manager].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\SSIS\MarketingCustomerBase\Mapping Geca Codes to Branch Names.xlsx;Extended Properties="EXCEL 12.0 XML;HDR=YES";</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[LocalHost.RelianceCustomerBase_FDW].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=srmon010745;Initial Catalog=FDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{2836EB80-C240-42E2-AB5B-46F913DE88A5}LocalHost.RelianceCustomerBase;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[LocalHost.RelianceCustomerBase_FDW_STG].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=srmon010745;Initial Catalog=FDW_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{2836EB80-C240-42E2-AB5B-46F913DE88A5}LocalHost.RelianceCustomerBase;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[que01.ueadmin].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=que01.rhc.int;User ID=ueadmin;Provider=OraOLEDB.Oracle.1;Persist Security Info=True;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[que01.ueadmin].Properties[Name]" ValueType="String">
+		<ConfiguredValue>que01.ueadmin</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[que01.ueadmin].Properties[Password]" ValueType="String">
+		<ConfiguredValue>FRAMEWORK</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[S2111181.ProductionObjectStore].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=s2111181.rhc.int;Initial Catalog=ProductionObjectStore;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Reliance Customer Base Final-{11008F6B-6FEC-41A1-9A37-08B8C1B284D0}S2111181.ProductionObjectStore;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SMTP Connection Manager].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>SmtpServer=smtp.reliancenet.ca;UseWindowsAuthentication=False;EnableSsl=False;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[SRMON010566.DLYReporting].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=SRMON010566;Initial Catalog=DLYReporting;Provider=SQLNCLI11.1;Integrated Security=SSPI;</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>

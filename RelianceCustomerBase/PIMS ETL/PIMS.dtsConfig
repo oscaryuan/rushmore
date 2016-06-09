@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- edited with XMLSpy v2013 (http://www.altova.com) by  () -->
+<DTSConfiguration>
+	<DTSConfigurationHeading>
+		<DTSConfigurationFileInfo GeneratedBy="RELIANCE\oyuan" GeneratedFromPackageName="PIMS" GeneratedFromPackageID="{9D06A51E-B9AB-4BDD-919A-254F6684E473}" GeneratedDate="6/8/2016 4:20:28 PM"/>
+	</DTSConfigurationHeading>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[LocalHost.RelianceCustomerBase].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=SRMON010745;Initial Catalog=FDW_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{2836EB80-C240-42E2-AB5B-46F913DE88A5}LocalHost.RelianceCustomerBase;</ConfiguredValue>
+	</Configuration>
+	<Configuration ConfiguredType="Property" Path="\Package.Connections[S2111181.ProductionObjectStore].Properties[ConnectionString]" ValueType="String">
+		<ConfiguredValue>Data Source=s2111181.rhc.int;Initial Catalog=ProductionObjectStore;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Reliance Customer Base Final-{11008F6B-6FEC-41A1-9A37-08B8C1B284D0}S2111181.ProductionObjectStore;</ConfiguredValue>
+	</Configuration>
+</DTSConfiguration>

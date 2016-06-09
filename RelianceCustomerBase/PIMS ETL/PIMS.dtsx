@@ -1,0 +1,829 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/6/2016 4:48:40 PM"
+  DTS:CreationName="SSIS.Package.3"
+  DTS:CreatorComputerName="SRMON010746"
+  DTS:CreatorName="RELIANCE\oyuan"
+  DTS:DTSID="{9D06A51E-B9AB-4BDD-919A-254F6684E473}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="SSIS.Package.3"
+  DTS:LastModifiedProductVersion="11.0.2100.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PIMS"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{1CF74BE0-BB26-4DBF-908B-E7D9A368ACB2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">6</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.RelianceCustomerBase]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{29053BB5-D6FD-4CF4-AE30-6F6D5E55228C}"
+      DTS:ObjectName="LocalHost.RelianceCustomerBase">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=sdmon010249;Initial Catalog=FDW_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{2836EB80-C240-42E2-AB5B-46F913DE88A5}LocalHost.RelianceCustomerBase;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[S2111181.ProductionObjectStore]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{67B3EB62-FB28-4BB4-A8D6-EC77DDAF6524}"
+      DTS:ObjectName="S2111181.ProductionObjectStore">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=s2111181.rhc.int;Initial Catalog=ProductionObjectStore;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Reliance Customer Base Final-{11008F6B-6FEC-41A1-9A37-08B8C1B284D0}S2111181.ProductionObjectStore;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{7D7E8361-9818-41DA-B05D-52B3012D0F33}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=smtp.reliancenet.ca;UseWindowsAuthentication=False;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="H:\RelianceCustomerBase\PIMS ETL\PIMS.dtsConfig"
+      DTS:ConfigurationType="1"
+      DTS:CreationName=""
+      DTS:DTSID="{DEF4838F-6EC7-4E94-B36B-938D7E5190DE}"
+      DTS:ObjectName="Configuration 1" />
+  </DTS:Configurations>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\PIMS Staging"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{52239D98-E2AF-4ECE-8645-824E32C75B2D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="PIMS Staging">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\PIMS Staging\PIMS Staging Load"
+          DTS:CreationName="SSIS.Pipeline.3"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{89E34481-E3B6-4307-AF6D-D8F111C21BB8}"
+          DTS:ExecutableType="SSIS.Pipeline.3"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="PIMS Staging Load"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v10; (C) 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              BLOBTempStoragePath=""
+              bufferTempStoragePath=""
+              version="1">
+              <components>
+                <component
+                  refId="Package\PIMS Staging\PIMS Staging Load\PIMS"
+                  componentClassID="{165A526D-D5DE-47FF-96A6-F8274C19826B}"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="PIMS"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT 
+        OriginalCustomerCode = rtrim(ltrim(CstmrCd.Key0)),
+        EmailAddress         = rtrim(ltrim(EmlAdrs.Key0)),
+        PhoneNumber         =left(replace(replace(replace(replace(rtrim(ltrim(PhoneAdrs.Key1)),'(',''),')',''),'-',''),' ',''),40),
+		
+       MailAddress         =left(rtrim(ltrim(Adrs.KEY0))+' '+rtrim(ltrim(Adrs.KEY1))+' '+replace(rtrim(ltrim(Adrs.KEY3)),' ',''),100),
+	   
+        SuppressTelephone    = PrvcyPrfrncs.Key1,
+        SuppressPostal       = PrvcyPrfrncs.Key2,
+        SuppressElectronic   = PrvcyPrfrncs.Key3
+      
+  
+  FROM (select OwnerOID,Key1,Key2,Key3 from PersistentObjectStore  where ClassName = 'ue.domain.objects.PrivacyPreferences' and Deleted = 0 ) PrvcyPrfrncs
+  LEFT OUTER JOIN PersistentObjectStore CstmrCd ON ( PrvcyPrfrncs.OwnerOID = CstmrCd.OwnerOID AND CstmrCd.ClassName = 'ue.domain.objects.BannerCustomerLink' )
+  INNER JOIN PersistentObjectStore EmlAdrs ON ( PrvcyPrfrncs.OwnerOID = EmlAdrs.OwnerOID AND EmlAdrs.ClassName = 'ue.domain.objects.InternetEmailAddress' )
+  INNER JOIN PersistentObjectStore PhoneAdrs ON ( PrvcyPrfrncs.OwnerOID = PhoneAdrs.OwnerOID AND PhoneAdrs.ClassName = 'ue.domain.objects.PhoneNumber' )
+  INNER JOIN PersistentObjectStore Adrs ON ( PrvcyPrfrncs.OwnerOID = Adrs.OwnerOID AND Adrs.ClassName ='ue.domain.objects.Address')</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[S2111181.ProductionObjectStore]"
+                      connectionManagerRefId="Package.ConnectionManagers[S2111181.ProductionObjectStore]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_OriginalCustomerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[OriginalCustomerCode]"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_OriginalCustomerCode]"
+                          name="P_OriginalCustomerCode"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_EmailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[EmailAddress]"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_EmailAddress]"
+                          name="P_EmailAddress"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressTelephone]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[SuppressTelephone]"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressTelephone]"
+                          name="P_SuppressTelephone"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressPostal]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[SuppressPostal]"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressPostal]"
+                          name="P_SuppressPostal"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressElectronic]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[SuppressElectronic]"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressElectronic]"
+                          name="P_SuppressElectronic"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[PhoneNumber]"
+                          name="PhoneNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[MailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[MailAddress]"
+                          length="100"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[MailAddress]"
+                          name="MailAddress"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[OriginalCustomerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="OriginalCustomerCode" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[EmailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="EmailAddress" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[SuppressTelephone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="SuppressTelephone" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[SuppressPostal]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="SuppressPostal" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[SuppressElectronic]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="SuppressElectronic" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[PhoneNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="PhoneNumber" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].ExternalColumns[MailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="MailAddress" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[OriginalCustomerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[OriginalCustomerCode]"
+                          name="OriginalCustomerCode" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[EmailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[EmailAddress]"
+                          name="EmailAddress" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[PhoneNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[PhoneNumber]"
+                          name="PhoneNumber" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[MailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[MailAddress]"
+                          name="MailAddress" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[SuppressTelephone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[SuppressTelephone]"
+                          name="SuppressTelephone" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[SuppressPostal]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[SuppressPostal]"
+                          name="SuppressPostal" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[SuppressElectronic]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[SuppressElectronic]"
+                          name="SuppressElectronic" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS"
+                  componentClassID="{4ADA7EAA-136C-4215-8098-D7A7C27FC0D1}"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Staging_PIMS"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Mkg_Staging_PIMS]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.RelianceCustomerBase]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.RelianceCustomerBase]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].Columns[P_OriginalCustomerCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="P_OriginalCustomerCode"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_OriginalCustomerCode]"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_OriginalCustomerCode]" />
+                        <inputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].Columns[P_EmailAddress]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="P_EmailAddress"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_EmailAddress]"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_EmailAddress]" />
+                        <inputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].Columns[P_SuppressTelephone]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="P_SuppressTelephone"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_SuppressTelephone]"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressTelephone]" />
+                        <inputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].Columns[P_SuppressPostal]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="P_SuppressPostal"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_SuppressPostal]"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressPostal]" />
+                        <inputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].Columns[P_SuppressElectronic]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="P_SuppressElectronic"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_SuppressElectronic]"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[P_SuppressElectronic]" />
+                        <inputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].Columns[PhoneNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="40"
+                          cachedName="PhoneNumber"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumber]"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[PhoneNumber]" />
+                        <inputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].Columns[MailAddress]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="MailAddress"
+                          externalMetadataColumnId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[MailAddress]"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output].Columns[MailAddress]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_OriginalCustomerCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="P_OriginalCustomerCode" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_EmailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="P_EmailAddress" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_SuppressTelephone]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="P_SuppressTelephone" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_SuppressPostal]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="P_SuppressPostal" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[P_SuppressElectronic]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="P_SuppressElectronic" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[PhoneNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="40"
+                          name="PhoneNumber" />
+                        <externalMetadataColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input].ExternalColumns[MailAddress]"
+                          codePage="1252"
+                          dataType="str"
+                          length="100"
+                          name="MailAddress" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\PIMS Staging\PIMS Staging Load.Paths[OLE DB Source Output]"
+                  endId="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\PIMS Staging\PIMS Staging Load\PIMS.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\PIMS Staging\Trancate PIMS Staging table"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{B055EA97-81E7-4BB5-A8BF-6FF3C0405BE9}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.ExecuteSQLTask.ExecuteSQLTask, Microsoft.SqlServer.SQLTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Trancate PIMS Staging table"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008 R2; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{29053BB5-D6FD-4CF4-AE30-6F6D5E55228C}"
+              SQLTask:SqlStatementSource="&#xA;truncate table Mkg_Staging_PIMS" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\PIMS Staging.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{F407237B-63D9-45BD-8716-0A23DFD2A233}"
+          DTS:From="Package\PIMS Staging\Trancate PIMS Staging table"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\PIMS Staging\PIMS Staging Load" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Send Mail Task"
+      DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:Description="Send Mail Task"
+      DTS:DTSID="{37595742-1573-4158-a516-362c597b163b}"
+      DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Send Mail Task"
+      DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SendMailTask:SendMailTaskData
+          SendMailTask:SMTPServer="{7D7E8361-9818-41DA-B05D-52B3012D0F33}"
+          SendMailTask:From="Admin@reliancecomfort.com"
+          SendMailTask:To="oyuan@reliancecomfort.com;AHajgato@reliancecomfort.com"
+          SendMailTask:Subject="All is done successfully for PIMS!"
+          SendMailTask:MessageSource="All is done successfully for PIMS!" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{13170EE6-74BE-441E-8746-F3F1654D3145}"
+      DTS:From="Package\PIMS Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Send Mail Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnTaskFailed]"
+      DTS:CreationName="OnTaskFailed"
+      DTS:DTSID="{915D2855-870E-4093-8D1D-6EAB24C0B2DB}"
+      DTS:EventID="0"
+      DTS:EventName="OnTaskFailed"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{AB21DF32-4842-47F6-B6E7-3D346FF465AD}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package.EventHandlers[OnTaskFailed]\Send Mail Task"
+          DTS:CreationName="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:Description="Send Mail Task"
+          DTS:DTSID="{343567b5-0ec4-418d-aacd-4de12754205d}"
+          DTS:ExecutableType="Microsoft.SqlServer.Dts.Tasks.SendMailTask.SendMailTask, Microsoft.SqlServer.SendMailTask, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Send Mail Task"
+          DTS:TaskContact="Send Mail Task; Microsoft Corporation; SQL Server 2012; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SendMailTask:SendMailTaskData
+              SendMailTask:SMTPServer="{7D7E8361-9818-41DA-B05D-52B3012D0F33}"
+              SendMailTask:From="Admin@reliancecomfort.com"
+              SendMailTask:To="oyuan@reliancecomfort.com;AHajgato@reliancecomfort.com"
+              SendMailTask:Subject="All is failed for PIMS!"
+              SendMailTask:MessageSource="All is failed for PIMS!" xmlns:SendMailTask="www.microsoft.com/sqlserver/dts/tasks/sendmailtask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql11">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="200,44"
+          Id="Package\PIMS Staging\PIMS Staging Load"
+          TopLeft="15.5471698113206,86.3207547169811" />
+        <NodeLayout
+          Size="209,44"
+          Id="Package\PIMS Staging\Trancate PIMS Staging table"
+          TopLeft="7.5471698113206,15.4716981132075" />
+        <EdgeLayout
+          Id="Package\PIMS Staging.PrecedenceConstraints[Constraint 2]"
+          TopLeft="113.797169811321,59.4716981132075">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26.8490566037736"
+              Start="0,0"
+              End="0,19.3490566037736">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.3490566037736" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.924528301886795"
+          IsExpanded="True"
+          PanelSize="227,161"
+          Size="227,205"
+          Id="Package\PIMS Staging"
+          TopLeft="664,158" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Send Mail Task"
+          TopLeft="711,423" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="777.5,363">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,60"
+              Start="0,0"
+              End="8.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="4.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,30"
+                    Point2="8.5,30"
+                    Point3="8.5,34" />
+                  <mssgle:LineSegment
+                    End="8.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\PIMS Staging\PIMS Staging Load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS"
+          TopLeft="5.5,156.292452830189" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\PIMS Staging\PIMS Staging Load\PIMS"
+          TopLeft="5.5,5.5" />
+        <EdgeLayout
+          Id="Package\PIMS Staging\PIMS Staging Load.Paths[OLE DB Source Output]"
+          TopLeft="73.3867924528302,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,106.867924528302"
+              Start="0,0"
+              End="0,99.3679245283019">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,99.3679245283019" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\PIMS Staging\PIMS Staging Load\Staging_PIMS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnTaskFailed]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150,42"
+          Id="Package.EventHandlers[OnTaskFailed]\Send Mail Task"
+          TopLeft="717,204" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
